@@ -7,6 +7,10 @@ name: DemoWorkflow
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
+    paths-ignore:
+      # ignore paths and markdown files
+      - ".github/workflows/**"
+      - "**/*.md"
     branches: [ "main", "feature-**" ]
   pull_request:
     branches: [ "main" ]
