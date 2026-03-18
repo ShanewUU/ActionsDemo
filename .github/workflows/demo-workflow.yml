@@ -74,10 +74,10 @@ jobs:
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'open-issue'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.GITHUB_TOKEN }}
       - name: Add assigness
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'add-assignees'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          #token: ${{ secrets.GITHUB_TOKEN }}
           assignees: ${{github.actor}}
