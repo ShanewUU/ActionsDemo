@@ -1,6 +1,7 @@
 # This is a basic workflow to help you get started with Actions
 
 name: DemoWorkflow
+# We require these permissions for the create an issue concurrency: Action at the bottom
 
 # Controls when the workflow will run
 on:
@@ -49,7 +50,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -60,4 +61,21 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
+
+  create_issue:
+  
+    if: ${{failure()}}
+    runs-on: ubuntu-latest
+    steps:
+      # Create an issue and assign it to the person who initiated this workflow run
+      - name: Open issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'open-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Add assigness
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'add-assignees'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: ${{github.actor}}
