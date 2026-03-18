@@ -20,21 +20,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Printe even that triggered the worklfow
-        run: echo "Workflow triggered by event ${{ github.event_name}}"
+      - name: Print event that triggered the worklfow
+        run: echo "Workflow triggered by event ${github.event_name}"
       - name: Print branch details
         run: | 
           # github.head_ref is the source of the branch of the pull request. Only set when there is a pull request
-          echo "Pull request source branch: ${{github.head_ref}}"
+          # echo "Pull request source branch: ${github.head_ref}"
           # github)ref is the fully-formed reference (eg refs/heads/main_ of the branch or tag that triggered the workflow run for push events. Format chanes for PRs
-          echo "Current branch: {{$GITHUB_REF}}"
+          echo "Current branch: {$GITHUB_REF}"
           # using string manipulation we can remove ref/heads with '##' leaving just the branch name
           echo "Current branch: ${GITHUB_REF##*/}"
           # or we can just use the short name
           echo "Github_ref_name: ${GITHUB_REF_NAME}"
           # How about who triggered the workflow run?
-          echo "Workflow triggered by: ${github.actor}"
-        
+          echo "Workflow triggered by: ${{github.actor}}"
+
+      
 
   # This workflow contains a single job called "build"
   build:
