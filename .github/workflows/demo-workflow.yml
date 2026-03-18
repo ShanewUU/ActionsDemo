@@ -65,8 +65,8 @@ jobs:
           echo test, and deploy your project.
 
   create_issue:
-  
-    if: ${{failure()}}
+    needs: [workflow_data, build]
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       # Create an issue and assign it to the person who initiated this workflow run
