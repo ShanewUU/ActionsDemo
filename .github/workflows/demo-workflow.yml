@@ -70,14 +70,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Create an issue and assign it to the person who initiated this workflow run
-      - name: Open issue
-        uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'open-issue'
-          #token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Add assigness
-        uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'add-assignees'
-          #token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: ${{github.actor}}
+      - name: Create a new issue
+        env:
+          LABEL: "bug"
+        run: gh issue create --title "Workflow failure" --assignee "${{github.actor}}" --body "${{github.actor}} you need to fix the workflow file" --label "$LABEL"
+      
+
