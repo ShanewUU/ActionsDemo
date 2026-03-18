@@ -24,7 +24,7 @@ jobs:
       - name: Print event that triggered the worklfow
         #run: echo "Workflow triggered by event ${{github.event_name}}"
         # Break a job
-        run: echo "Workflow triggered by event ${{github.event_name}"
+        run: echo "Workflow triggered by event ${github.event_name}"
       - name: Print branch details
         run: | 
           # github context contains information about the workflow run and the event that triggered it
