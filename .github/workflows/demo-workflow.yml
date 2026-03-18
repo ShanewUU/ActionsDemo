@@ -17,7 +17,7 @@ on:
 jobs:
   # Get data on workflow run
   workflow_data:
-    runs-on: uubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Printe even that triggered the worklfow
