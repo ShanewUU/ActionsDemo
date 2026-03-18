@@ -72,6 +72,7 @@ jobs:
       issues: write
     steps:
       # Create an issue and assign it to the person who initiated this workflow run
+      - uses: actions/checkout@v6
       - name: Create a new issue
         env:
           LABEL: "bug"
