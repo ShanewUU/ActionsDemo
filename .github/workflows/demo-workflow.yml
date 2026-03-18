@@ -66,7 +66,7 @@ jobs:
 
   create_issue:
   
-    if: ${{failure()}}
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       # Create an issue and assign it to the person who initiated this workflow run
